@@ -106,8 +106,12 @@ require_once "user.php";
                                                $image = $row2['image'];
                                                $image_src = "upload/service/".$image;
 
+                                               $image1 = $row1['sample_image'];
+                                               $image_src3 = "upload/order/".$image;
+
+
                                                $created_image = $row1['created_image'];
-                                               $image_src1 = "upload/service/".$created_image;?>
+                                               $image_src1 = "upload/order/".$created_image;?>
 
 
 
@@ -147,9 +151,15 @@ require_once "user.php";
                                                     <?php }?>
                                                     </div>
                                                   </div>
+                                              <?php if ($row1['sample_image'] != "Pending") { ?>
+                                                <div class="col-md-12 mt-5">
+                                                  <h1 class="text-dark">Sample Image</h1>
+                                                        <img width="60%" src='<?php echo $image_src3; ?>'>
+                                                </div>
+                                              <?php } ?>
                                               <?php if ($row1['created_image'] != "Pending") { ?>
                                                 <div class="col-md-12 mt-5">
-                                                  <h1 class="text-dark">Created Design.. Sample</h1>
+                                                  <h1 class="text-dark">Created Design.. </h1>
                                                         <img width="60%" src='<?php echo $image_src1; ?>'>
                                                 </div>
                                               <?php } ?>

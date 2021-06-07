@@ -92,13 +92,16 @@
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card widget-card-1">
                                                     <div class="card-block-small">
-                                                        <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
-                                                        <span class="text-c-pink f-w-600">Revenue</span>
-                                                        <h4>$23,589</h4>
+                                                        <i class="fas fa-calendar-check bg-c-pink card1-icon"></i>
+                                                        <?php $count = 0;
+                                                              $sales = 0;
+                                                              $viewquery1 = " SELECT * FROM getorder  where payment= 'Paid' ";
+                                                              $viewresult1 = mysqli_query($con,$viewquery1); 
+                                                              $result = mysqli_num_rows($viewresult1);
+                                                              ?>
+                                                        <span class="text-c-pink f-w-600">Complete Orders</span>
+                                                        <h4><?php echo $result; ?></h4>
                                                         <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
-                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -108,13 +111,22 @@
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card widget-card-1">
                                                     <div class="card-block-small">
-                                                        <i class="icofont icofont-warning-alt bg-c-green card1-icon"></i>
-                                                        <span class="text-c-green f-w-600">Fixed issue</span>
-                                                        <h4>45</h4>
+                                                        <i class="fas fa-money-check bg-c-green card1-icon"></i>
+                                                         <?php $count = 0;
+                                                            $full_total = 0;
+                                                            $viewquery1 = " SELECT * FROM getorder  where payment= 'Paid' ";
+                                                            $viewresult2 = mysqli_query($con,$viewquery1); 
+                                                              
+                                                              while($row1 = mysqli_fetch_assoc($viewresult2)) { 
+
+                                                                    if ($row1['payment'] == 'Paid') { 
+                                                                        $full_total = $full_total + $row1['amount'];
+                                                                    }
+                                                                    $count++; 
+                                                                }?>
+                                                        <span class="text-c-green f-w-600">Total Income</span>
+                                                        <h4>Rs. <?php echo $full_total; ?></h4>
                                                         <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-green f-16 icofont icofont-tag m-r-10"></i>Tracked via microsoft
-                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>

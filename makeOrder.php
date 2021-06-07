@@ -160,6 +160,19 @@ require_once "user.php";
                                                           
                                     }else{
 
+
+                                            $q1="INSERT INTO getorder(service_id,description,sample_image,amount,status,payment,created_image,order_date,dedline,customer_id) values('$service_id','$description','Pending','$pending','$pending','$pending','$pending','$cdate','$date','$customer_id')";
+                                                  $res1=mysqli_query($con,$q1);
+                                                  if ( $res1) {
+
+                                                       echo '<script>alert("Order Make Save Success.");
+                                                       window.location.href="myOrder.php";</script>';
+                                                      
+                                                  }else{
+                                                    echo "<script>alert(\"Order Make was not Success\");</script>";
+                                                  }
+                                          
+
                                     }              
 
                                   }else{ echo "<script>alert(\"Please Enter Description\");</script>";}
